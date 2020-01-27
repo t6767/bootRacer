@@ -56,7 +56,7 @@ class reactionUI extends PDO
             case "Последние статьи":
                 $reply = "";
                 for ($i=0; $i<3; $i++) {
-                    $reply .= "\xE2\x9E\xA1 <b>Титул</b> <i>$i</i> (<a href='http://battlefield-t67.9oweb.kz/'><button>читать</button></a>)\n";
+                    $reply .= "\xE2\x9E\xA1 <b>Титул</b> <i>$i</i> (<a href='http://battlefield-t67.9oweb.kz/'>читать</a>)\n";
                 }
                 $this->telegram->sendMessage([ 'chat_id' => $this->chatID, 'parse_mode' => 'HTML', 'disable_web_page_preview' => true, 'text' => $reply ]);
                 break;
