@@ -67,6 +67,10 @@ class reactionUI extends PDO
                 }
                 $this->sendHTML($reply);
                 break;
+            case "voice":
+                $voice="http://fathercarlo.9oweb.kz/api/Money.mp3";
+                $this->sendVoice($voice);
+                break;
 			default:
                 {
 				$this->sendMSG($this->userName.' привет!!!');
@@ -98,6 +102,11 @@ class reactionUI extends PDO
     public function sendDoc($url, $desc)
     {
         $this->telegram->sendDocument([ 'chat_id' => $this->chatID, 'document' => $url, 'caption' => $desc ]);
+    }
+
+    public function sendVoice($voice)
+    {
+        $this->telegram->sendVoice($this->chatID, $voice);
     }
 	
 	/** Базы данных **/
