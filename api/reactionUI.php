@@ -26,7 +26,7 @@ class reactionUI extends PDO
         $this->telegram = new Api($bootID);
 		
 		$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
-        $this->keyboard2 = [['text' => 'Какой-то текст', 'callback_data' => 'данные которые отправятся на webhook когда пользователь нажмет на кнопку']];
+        $this->keyboard2 = [[['text' => 'Какой-то текст', 'callback_data' => 'данные которые отправятся на webhook когда пользователь нажмет на кнопку']]];
 		// парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
