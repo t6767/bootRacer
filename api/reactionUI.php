@@ -26,7 +26,7 @@ class reactionUI extends PDO
         $this->telegram = new Api($bootID);
 		
 		$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
-        $this->keyboard2 =  [[[text => "forward me to groups"]]];
+        $this->keyboard2 = [[text =>"Последние статьи"],[text =>"Картинка"],[text =>"Гифка"]];
 		// парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
@@ -51,7 +51,7 @@ class reactionUI extends PDO
 				break;
             case "stop" :
                 $reply = "Добро бота!";
-                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'inline_keyboard' => $this->keyboard2]);
+                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'keyboard' => $this->keyboard2]);
                 $this->sendMSGRepl($reply, $reply_markup);
                 break;
             case "Картинка":
