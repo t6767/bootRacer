@@ -48,8 +48,7 @@ class reactionUI extends PDO
                 $this->sendMSGRepl($reply, $reply_markup);
 				break;
             case "Картинка":
-                $url = "http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png";
-                $this->telegram->sendPhoto([ 'chat_id' => $this->chatID, 'photo' => $url, 'caption' => "Описание." ]);
+                $this->sendPic("http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png", "Описание. Пиздатая картинка");
                 break;
 			default:
                 {
@@ -62,6 +61,11 @@ class reactionUI extends PDO
 	{
 		return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg, 'reply_markup'=>null]);
 	}
+
+    public function sendPic($url, $desc)
+    {
+        $this->telegram->sendPhoto([ 'chat_id' => $this->chatID, 'photo' => $url, 'caption' => $desc ]);
+    }
 
     public function sendMSGRepl($msg, $reply_markup)
     {
