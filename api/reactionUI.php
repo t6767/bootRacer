@@ -50,6 +50,9 @@ class reactionUI extends PDO
             case "Картинка":
                 $this->sendPic("http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png", "Описание. Пиздатая картинка");
                 break;
+            case "Гифка":
+                $this->sendDoc("https://i.gifer.com/fyDA.gif", "описалово");
+                break;
 			default:
                 {
 				$this->sendMSG($this->userName.' привет!!!');
@@ -62,14 +65,19 @@ class reactionUI extends PDO
 		return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg, 'reply_markup'=>null]);
 	}
 
+    public function sendMSGRepl($msg, $reply_markup)
+    {
+        return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg, 'reply_markup'=>$reply_markup]);
+    }
+
     public function sendPic($url, $desc)
     {
         $this->telegram->sendPhoto([ 'chat_id' => $this->chatID, 'photo' => $url, 'caption' => $desc ]);
     }
 
-    public function sendMSGRepl($msg, $reply_markup)
+    public function sendDoc($url, $desc)
     {
-        return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg, 'reply_markup'=>$reply_markup]);
+        $this->telegram->sendDocument([ 'chat_id' => $this->chatID, 'document' => $url, 'caption' => $desc ]);
     }
 	
 	/** Базы данных **/
