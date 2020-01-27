@@ -38,7 +38,7 @@ class reactionUI extends PDO
 
 	/** Telegram **/
 	
-	public senderIO($msg)
+	public function senderIO($msg)
 	{
 		switch($msg)
 		{
