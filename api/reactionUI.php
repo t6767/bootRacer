@@ -18,6 +18,13 @@ class reactionUI extends PDO
 	// Создадим конструктор ебаный Лего
 	public function __construct($bootID, $data, $file)
     {
+		// Блок переменных массив делим в переменные
+		$idmsg=$data['message']['message_id'];
+		$uid=$data['message']['from']['id'];
+		$unm=$data['message']['from']['first_name'];
+		$dt=date("Y-m-d H:i:s", $data['message']['date']);
+		$ms=$data['message']['text'];
+		$chatID=$data['message']['chat']['id'];
         // парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
