@@ -1,6 +1,5 @@
 <?php
 $postData = file_get_contents('php://input');
-$postData = file_get_contents('php://input');
 $data = json_decode($postData, true);
 // Блок переменных массив делим в переменные
 $idmsg=$data['message']['message_id'];
