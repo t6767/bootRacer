@@ -12,6 +12,7 @@ class reactionUI extends PDO
 	public $messageDate;
 	public $message;
 	public $keyboard;
+    public $keyboard2;
 	// Создадим конструктор ебаный Лего
 	public function __construct($bootID, $data, $file)
     {
@@ -25,6 +26,7 @@ class reactionUI extends PDO
         $this->telegram = new Api($bootID);
 		
 		$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
+        $this->keyboard2 = [['text' => 'Какой-то текст', 'callback_data' => 'данные которые отправятся на webhook когда пользователь нажмет на кнопку']];
 		// парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
@@ -49,7 +51,7 @@ class reactionUI extends PDO
 				break;
             case "stop" :
                 $reply = "Добро бота!";
-                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'inline_keyboard' => $this->keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'inline_keyboard' => $this->keyboard2]);
                 $this->sendMSGRepl($reply, $reply_markup);
                 break;
             case "Картинка":
