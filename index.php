@@ -12,7 +12,7 @@ $chatID=$data['message']['chat']['id'];
 var_dump($postData);
 require 'vendor/autoload.php';
 use Telegram\Bot\Api;
-$telegram = new Api('1011237128:AAH5GA5D1yP09M-hgWbc-3fD11RP9vTXgMw');
+$telegram = new Api('417445048:AAFx37CoDNNItBN0NHL3xj5TaBXNSNXqzgM');
 $response = $telegram->sendMessage([
   'chat_id' => $chatID, 
   'text' => 'Hello World'
