@@ -33,7 +33,7 @@ class reactionUI extends PDO
 		
 		// Обработка сообщений
 		$this->saveToBase('Данные пользователя', print_r($this->message, true)); 
-		//$this->senderIO($this->message);
+		$this->senderIO($this->message);
     }
 
 	/** Telegram **/
