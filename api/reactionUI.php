@@ -50,10 +50,12 @@ class reactionUI extends PDO
 			case "start" :
                 $reply = "Добро пожаловать в бота!";
                 $reply_markup = $this->telegram->replyKeyboardMarkup([ 'keyboard' => $this->keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
-                $this->sendMSGRepl($reply, $reply_markup);
-				break;
+                $rec=$this->sendMSGRepl($reply, $reply_markup);
+                $this->saveToBase('start', print_r($rec, true));
+                break;
             case "Картинка":
-                $this->sendPic("http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png", "Описание. Пиздатая картинка");
+                $rec=$this->sendPic("http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png", "Описание. Пиздатая картинка");
+                $this->saveToBase('pic start', print_r($rec, true));
                 break;
             case "Гифка":
                 $this->sendDoc("https://i.gifer.com/fyDA.gif", "описалово");
