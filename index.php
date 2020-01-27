@@ -16,7 +16,6 @@ $response = $telegram->sendMessage([
   'chat_id' => $chatID, 
   'text' => 'Hello World'
 ]);
-
 $messageId = $response->getMessageId();
 $response = $telegram->getMe();
 var_dump($response);
