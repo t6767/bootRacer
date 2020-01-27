@@ -1,5 +1,4 @@
 <?php
-var_dump($_GET);
 $postData = file_get_contents('php://input');
 var_dump($postData);
 require 'vendor/autoload.php';
