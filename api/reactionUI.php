@@ -54,13 +54,9 @@ class reactionUI extends PDO
                 $this->sendDoc("https://i.gifer.com/fyDA.gif", "описалово");
                 break;
             case "Последние статьи":
-                $reply="\xE2\x9E\xA1 ";
-                $html=simplexml_load_file('http://netology.ru/blog/rss.xml');
-                $i=0;
-                foreach ($html->channel->item as $item) {
-                    $reply .= "\xE2\x9E\xA1 ".$item->title." (<a href='".$item->link."'>читать</a>)\n";
-                    $i++;
-                    if($i>3) break;
+                $reply = "";
+                for ($i=0; $i<3; $i++) {
+                    $reply .= "\xE2\x9E\xA1 Титул $i (<a href='http://battlefield-t67.9oweb.kz/'>читать</a>)\n";
                 }
                 $this->telegram->sendMessage([ 'chat_id' => $this->chatID, 'parse_mode' => 'HTML', 'disable_web_page_preview' => true, 'text' => $reply ]);
                 break;
