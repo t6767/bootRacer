@@ -37,8 +37,9 @@ class reactionUI extends PDO
         $dns = $settings['database']['driver'].':host=' . $settings['database']['host'].((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '').';dbname='.$settings['database']['schema'].';charset=utf8';
         parent::__construct($dns, $settings['database']['username'], $settings['database']['password']);
 		$telegram = new Api($bootID);
+		$this->saveToBase('Данные пользователя1', print_r($data, true));
 		$this->sendMSG($this->userName.' привет!!!');
-		//$this->saveToBase('Данные пользователя', print_r($data, true));
+		$this->saveToBase('Данные пользователя', print_r($data, true));
     }
 
 	public function sendMSG($msg)
