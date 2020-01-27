@@ -12,8 +12,7 @@ class reactionUI extends PDO
 	public $messageDate;
 	public $message;
 	public $keyboard;
-    public $keyboard2;
-	// Создадим конструктор ебаный Лего
+    // Создадим конструктор ебаный Лего
 	public function __construct($bootID, $data, $file)
     {
 		// Блок переменных объявляем их глобальными
@@ -26,8 +25,7 @@ class reactionUI extends PDO
         $this->telegram = new Api($bootID);
 		
 		$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
-        $this->keyboard2 = [['text' =>"Последние статьи1"],['text' =>"Картинка1"],['text' =>"Гифка1"]];
-		// парсим файл подключения
+        // парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
         $dns = $settings['database']['driver'].':host=' . $settings['database']['host'].((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '').';dbname='.$settings['database']['schema'].';charset=utf8';
@@ -49,11 +47,6 @@ class reactionUI extends PDO
                 $reply_markup = $this->telegram->replyKeyboardMarkup([ 'keyboard' => $this->keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
                 $this->sendMSGRepl($reply, $reply_markup);
 				break;
-            case "stop" :
-                $reply = "Добро бота!";
-                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'inline_keyboard' => $this->keyboard2]);
-                $this->sendMSGRepl($reply, $reply_markup);
-                break;
             case "Картинка":
                 $this->sendPic("http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png", "Описание. Пиздатая картинка");
                 break;
@@ -66,10 +59,6 @@ class reactionUI extends PDO
                     $reply .= "\xE2\x9E\xA1 <b>ТитулXXX</b> <i>$i</i> (<a href='https://mail.ru/'>читать</a>)\n";
                 }
                 $this->sendHTML($reply);
-                break;
-            case "voice":
-                $voice="http://fathercarlo.9oweb.kz/api/Money.mp3";
-                $this->sendVoice($voice);
                 break;
 			default:
                 {
