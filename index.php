@@ -17,7 +17,9 @@ $response = $telegram->sendMessage([
   'text' => 'Hello World'
 ]);
 
-//$messageId = $response->getMessageId();
+$messageId = $response->getMessageId();
 $response = $telegram->getMe();
 var_dump($response);
+$result = $telegram -> getWebhookUpdates();
+var_dump($result);
 ?>
