@@ -24,7 +24,7 @@ class reactionUI extends PDO
 		$this->chatID=$data['message']['chat']['id'];
         $this->telegram = new Api($bootID);
 		
-		$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
+		//$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
 		// парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
@@ -33,7 +33,7 @@ class reactionUI extends PDO
 		
 		// Обработка сообщений
 		$this->saveToBase('Данные пользователя', print_r($this->message, true)); 
-		$this->senderIO($this->message);
+		//$this->senderIO($this->message);
     }
 
 	/** Telegram **/
