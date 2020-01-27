@@ -24,7 +24,7 @@ class reactionUI extends PDO
 		$this->chatID=$data['message']['chat']['id'];
         $this->telegram = new Api($bootID);
 		
-		//$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
+		$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
 		// парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
@@ -42,8 +42,10 @@ class reactionUI extends PDO
 	{
 		switch($msg)
 		{
-			case "start" : 
-				$this->sendMSG($this->userName.' погнали');
+			case "start" :
+                $reply = "Добро пожаловать в бота!";
+                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'keyboard' => $this->keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+                $this->sendMSGRepl($reply, $reply_markup);
 				break;
 			default:
                 {
@@ -56,6 +58,11 @@ class reactionUI extends PDO
 	{
 		return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg]);
 	}
+
+    public function sendMSGRepl($msg, $reply_markup)
+    {
+        return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg, 'reply_markup'=>$reply_markup]);
+    }
 	
 	/** Базы данных **/
 	
