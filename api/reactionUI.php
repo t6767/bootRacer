@@ -47,6 +47,10 @@ class reactionUI extends PDO
                 $reply_markup = $this->telegram->replyKeyboardMarkup([ 'keyboard' => $this->keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
                 $this->sendMSGRepl($reply, $reply_markup);
 				break;
+            case "Картинка":
+                $url = "http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png";
+                $this->telegram->sendPhoto([ 'chat_id' => $this->chat_id, 'photo' => $url, 'caption' => "Описание." ]);
+                break;
 			default:
                 {
 				$this->sendMSG($this->userName.' привет!!!');
