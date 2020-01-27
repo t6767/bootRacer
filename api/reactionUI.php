@@ -56,7 +56,7 @@ class reactionUI extends PDO
 
 	public function sendMSG($msg)
 	{
-		return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg]);
+		return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg, 'reply_markup'=>null]);
 	}
 
     public function sendMSGRepl($msg, $reply_markup)
