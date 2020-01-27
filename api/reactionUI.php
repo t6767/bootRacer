@@ -51,7 +51,7 @@ class reactionUI extends PDO
 				break;
             case "stop" :
                 $reply = "Добро бота!";
-                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'inline_keyboard' => $this->keyboard]);
+                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'inline_keyboard' => $this->keyboard2]);
                 $this->sendMSGRepl($reply, $reply_markup);
                 break;
             case "Картинка":
