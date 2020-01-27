@@ -59,7 +59,6 @@ class reactionUI extends PDO
                     $reply .= "\xE2\x9E\xA1 <b>ТитулXXX</b> <i>$i</i> (<a href='https://mail.ru/'>читать</a>)\n";
                 }
                 $this->sendHTML($reply);
-                $this->sendMSG($reply);
                 break;
 			default:
                 {
