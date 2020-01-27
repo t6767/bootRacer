@@ -32,7 +32,7 @@ class reactionUI extends PDO
         parent::__construct($dns, $settings['database']['username'], $settings['database']['password']);
 		$telegram = new Api($bootID);
 		$this->saveToBase('Данные пользователя', print_r($data, true));
-		$response = $telegram->sendMessage(['chat_id' => $chatID, 'text' => 'Hello World']);
+		$response = $telegram->sendMessage(['chat_id' => $chatID, 'text' => 'привет']);
 		$this->saveToBase('ответ на посылку пользователю', print_r($response, true));
     }
 
