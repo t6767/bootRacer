@@ -24,7 +24,12 @@ class reactionUI extends PDO
 		$this->chatID=$data['message']['chat']['id'];
         $this->telegram = new Api($bootID);
 		
-		$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
+		//$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
+        $this->keyboard = array(
+            array(array('callback_data'=>'/butt1','text'=>'Кнопка 1')),
+            array(array('callback_data'=>'/buut2','text'=>'Кнопка 2')),
+        );
+
         // парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
