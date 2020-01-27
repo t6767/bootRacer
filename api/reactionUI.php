@@ -15,6 +15,7 @@ var_dump($result);
 
 class reactionUI extends PDO
 {
+	public $telegram;
 	public $messageID;
 	public $chatID;
 	public $userID;
@@ -24,27 +25,29 @@ class reactionUI extends PDO
 	// Создадим конструктор ебаный Лего
 	public function __construct($bootID, $data, $file)
     {
-		// Блок переменных массив делим в переменные
+		// Блок переменных объявляем их глобальными
 		$this->messageID=$data['message']['message_id'];
 		$this->userID=$data['message']['from']['id'];
 		$this->userName=$data['message']['from']['first_name'];
 		$this->messageDate=date("Y-m-d H:i:s", $data['message']['date']);
 		$this->message=$data['message']['text'];
 		$this->chatID=$data['message']['chat']['id'];
-        // парсим файл подключения
+        $this->telegram = new Api($bootID);
+		
+		// парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
         $dns = $settings['database']['driver'].':host=' . $settings['database']['host'].((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '').';dbname='.$settings['database']['schema'].';charset=utf8';
         parent::__construct($dns, $settings['database']['username'], $settings['database']['password']);
-		$telegram = new Api($bootID);
-		$this->saveToBase('Данные пользователя1', print_r($data, true));
-		$this->sendMSG($this->userName.' привет!!!');
+		
+		// Обработка
+		$this->sendMSG($this->userName.'привет!!!');
 		$this->saveToBase('Данные пользователя', print_r($data, true));
     }
 
 	public function sendMSG($msg)
 	{
-		return $telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg]);
+		return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg]);
 	}
 	public function saveToBase($name, $res)
     {
