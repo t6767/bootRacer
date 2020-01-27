@@ -12,11 +12,15 @@ var_dump($postData);
 require 'vendor/autoload.php';
 use Telegram\Bot\Api;
 $telegram = new Api('417445048:AAFx37CoDNNItBN0NHL3xj5TaBXNSNXqzgM');
-$response = $telegram->sendMessage([
+/*$response = $telegram->sendMessage([
   'chat_id' => $chatID, 
   'text' => 'Hello World'
 ]);
 $messageId = $response->getMessageId();
+*/
+require_once("api/reactionUI.php");
+$reactionUI = new reactionUI();
+
 $response = $telegram->getMe();
 var_dump($response);
 $result = $telegram -> getWebhookUpdates();
