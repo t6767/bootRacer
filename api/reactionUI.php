@@ -56,9 +56,9 @@ class reactionUI extends PDO
             case "Последние статьи":
                 $reply = "";
                 for ($i=0; $i<3; $i++) {
-                    $reply .= "\xE2\x9E\xA1 <b>Титул</b> <i>$i</i> (<a href='http://battlefield-t67.9oweb.kz/'>читать</a>)\n";
+                    $reply .= "\xE2\x9E\xA1 <b>ТитулXXX</b> <i>$i</i> (<a href='https://mail.ru/'>читать</a>)\n";
                 }
-                $this->telegram->sendMessage([ 'chat_id' => $this->chatID, 'parse_mode' => 'HTML', 'disable_web_page_preview' => true, 'text' => $reply ]);
+                $this->sendHTML($reply);
                 break;
 			default:
                 {
@@ -71,6 +71,12 @@ class reactionUI extends PDO
 	{
 		return $this->telegram->sendMessage(['chat_id' => $this->chatID, 'text' => $msg, 'reply_markup'=>null]);
 	}
+
+    public function sendHTML($msg, $reply_markup=null)
+    {
+        // <b>, <a>, <i>, <code> <pre>
+        return $this->telegram->sendMessage([ 'chat_id' => $this->chatID, 'parse_mode' => 'HTML', 'disable_web_page_preview' => true, 'text' => $msg, 'reply_markup'=>$reply_markup]);
+    }
 
     public function sendMSGRepl($msg, $reply_markup)
     {
