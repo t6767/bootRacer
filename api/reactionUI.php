@@ -49,7 +49,7 @@ class reactionUI extends PDO
 				break;
             case "Картинка":
                 $url = "http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png";
-                $this->telegram->sendPhoto([ 'chat_id' => $this->chat_id, 'photo' => $url, 'caption' => "Описание." ]);
+                $this->telegram->sendPhoto([ 'chat_id' => $this->chatID, 'photo' => $url, 'caption' => "Описание." ]);
                 break;
 			default:
                 {
