@@ -7,12 +7,12 @@ $telegram = new Api('417445048:AAFx37CoDNNItBN0NHL3xj5TaBXNSNXqzgM');
   'text' => 'Hello World'
 ]);
 $messageId = $response->getMessageId();
-*/
 
 $response = $telegram->getMe();
 var_dump($response);
 $result = $telegram -> getWebhookUpdates();
 var_dump($result);
+*/
 
 class reactionUI extends PDO
 {
