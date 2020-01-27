@@ -37,7 +37,7 @@ class reactionUI extends PDO
         parent::__construct($dns, $settings['database']['username'], $settings['database']['password']);
 		
 		// Обработка сообщений
-		$this->saveToBase('Данные пользователя', print_r($this->message, true)); 
+		$this->saveToBase('Данные пользователя', print_r($data, true));
 		$this->senderIO($this->message);
     }
 
