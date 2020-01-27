@@ -47,6 +47,11 @@ class reactionUI extends PDO
                 $reply_markup = $this->telegram->replyKeyboardMarkup([ 'keyboard' => $this->keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
                 $this->sendMSGRepl($reply, $reply_markup);
 				break;
+            case "stop" :
+                $reply = "Добро бота!";
+                $reply_markup = $this->telegram->replyKeyboardMarkup([ 'inline_keyboard' => $this->keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+                $this->sendMSGRepl($reply, $reply_markup);
+                break;
             case "Картинка":
                 $this->sendPic("http://battlefield-t67.9oweb.kz/static/img/general/entry_img.png", "Описание. Пиздатая картинка");
                 break;
