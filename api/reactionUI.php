@@ -56,9 +56,12 @@ class reactionUI extends PDO
             case "Последние статьи":
                 $reply="\xE2\x9E\xA1 ";
                 $html=simplexml_load_file('http://netology.ru/blog/rss.xml');
-                //foreach ($html->channel->item as $item) {
-                //    $reply .= "\xE2\x9E\xA1 ".$item->title." (<a href='".$item->link."'>читать</a>)\n";
-                //}
+                $i=0;
+                foreach ($html->channel->item as $item) {
+                    $reply .= "\xE2\x9E\xA1 ".$item->title." (<a href='".$item->link."'>читать</a>)\n";
+                    $i++;
+                    if($i>3) break;
+                }
                 $this->telegram->sendMessage([ 'chat_id' => $this->chatID, 'parse_mode' => 'HTML', 'disable_web_page_preview' => true, 'text' => $reply ]);
                 break;
 			default:
