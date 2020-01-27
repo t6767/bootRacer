@@ -1,4 +1,19 @@
 <?php
+require 'vendor/autoload.php';
+use Telegram\Bot\Api;
+$telegram = new Api('417445048:AAFx37CoDNNItBN0NHL3xj5TaBXNSNXqzgM');
+/*$response = $telegram->sendMessage([
+  'chat_id' => $chatID, 
+  'text' => 'Hello World'
+]);
+$messageId = $response->getMessageId();
+*/
+
+$response = $telegram->getMe();
+var_dump($response);
+$result = $telegram -> getWebhookUpdates();
+var_dump($result);
+
 class reactionUI extends PDO
 {
 	// Создадим конструктор ебаный Лего
