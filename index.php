@@ -10,5 +10,5 @@ $ms=$data['message']['text'];
 $chatID=$data['message']['chat']['id'];
 var_dump($postData);
 require_once("api/reactionUI.php");
-$reactionUI = new reactionUI();
+$reactionUI = new reactionUI('417445048:AAFx37CoDNNItBN0NHL3xj5TaBXNSNXqzgM','my_setting.ini');
 ?>
