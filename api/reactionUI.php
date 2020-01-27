@@ -1,17 +1,6 @@
 <?php
 require 'vendor/autoload.php';
 use Telegram\Bot\Api;
-/*$response = $telegram->sendMessage([
-  'chat_id' => $chatID, 
-  'text' => 'Hello World'
-]);
-$messageId = $response->getMessageId();
-
-$response = $telegram->getMe();
-var_dump($response);
-$result = $telegram -> getWebhookUpdates();
-var_dump($result);
-*/
 
 class reactionUI extends PDO
 {
@@ -42,7 +31,7 @@ class reactionUI extends PDO
 		
 		// Обработка
 		$this->sendMSG($this->userName.'привет!!!');
-		$this->saveToBase('Данные пользователя', print_r($data, true));
+		$this->saveToBase('Данные пользователя', print_r($this->telegram->getMe(), true));
     }
 
 	public function sendMSG($msg)
