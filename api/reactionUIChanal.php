@@ -16,15 +16,14 @@ class reactionChanal extends PDO
 	public function __construct($bootID, $data, $file)
     {
 		// Блок переменных объявляем их глобальными
-        $this->messageID=$data['message']['message_id'];
-		$this->userID=$data['message']['from']['id'];
-		$this->userName=$data['message']['from']['first_name'];
-		$this->messageDate=date("Y-m-d H:i:s", $data['message']['date']);
-		$this->message=$data['message']['text'];
-		$this->chatID=$data['message']['chat']['id'];
+        //$this->messageID=$data['message']['message_id'];
+		//$this->userID=$data['message']['from']['id'];
+		//$this->userName=$data['message']['from']['first_name'];
+		//$this->messageDate=date("Y-m-d H:i:s", $data['message']['date']);
+		//$this->message=$data['message']['text'];
+		//$this->chatID=$data['message']['chat']['id'];
         $this->telegram = new Api($bootID);
-		
-		$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
+		//$this->keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
         //$this->keyboard = array(
         //    array(array('callback_data'=>'/butt1','text'=>'Кнопка 1')),
         //    array(array('callback_data'=>'/buut2','text'=>'Кнопка 2')),
@@ -35,10 +34,10 @@ class reactionChanal extends PDO
         // Создаем подключение к БД
         $dns = $settings['database']['driver'].':host=' . $settings['database']['host'].((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '').';dbname='.$settings['database']['schema'].';charset=utf8';
         parent::__construct($dns, $settings['database']['username'], $settings['database']['password']);
-		
 		// Обработка сообщений
 		$this->saveToBase('Данные пользователя', print_r($data, true));
-		$this->senderIO($this->message);
+		//$this->senderIO($this->message);
+        echo "777777";
     }
 
 	/** Telegram **/
