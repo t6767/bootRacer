@@ -28,15 +28,16 @@ class reactionChanal extends PDO
         //    array(array('callback_data'=>'/butt1','text'=>'Кнопка 1')),
         //    array(array('callback_data'=>'/buut2','text'=>'Кнопка 2')),
         //);
-
+        $response = $this->telegram->getMe();
         // парсим файл подключения
         $settings = parse_ini_file($file, TRUE);
         // Создаем подключение к БД
         $dns = $settings['database']['driver'].':host=' . $settings['database']['host'].((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '').';dbname='.$settings['database']['schema'].';charset=utf8';
         parent::__construct($dns, $settings['database']['username'], $settings['database']['password']);
 		// Обработка сообщений
-		$this->saveToBase('Данные пользователя', print_r($data, true));
+		$this->saveToBase('О боте', print_r($response, true));
 		//$this->senderIO($this->message);
+        var_dump($response);
         echo "777777";
     }
 
