@@ -16,7 +16,7 @@ class reactionUI extends PDO
 	public function __construct($bootID, $data, $file)
     {
 		// Блок переменных объявляем их глобальными
-		$this->messageID=$data['message']['message_id'];
+        $this->messageID=$data['message']['message_id'];
 		$this->userID=$data['message']['from']['id'];
 		$this->userName=$data['message']['from']['first_name'];
 		$this->messageDate=date("Y-m-d H:i:s", $data['message']['date']);
